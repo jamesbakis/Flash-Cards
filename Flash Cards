@@ -2,7 +2,7 @@ import tkinter as tk
 import random
 
 root = tk.Tk()
-flashcardLabel = tk.Label(root, wraplength=250, text="Press enter to see flash cards")
+flashcardLabel = tk.Label(root, wraplength=250, text="Press right to see flash cards")
 flashcards = []
 flashcard = None
 flashcardState = True
