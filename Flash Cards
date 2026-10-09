@@ -27,7 +27,7 @@ def main():
 
     global flashcards
 
-    with open("flashcards", "r") as file:
+    with open("flashCards", "r") as file:
         unit = []
         i = 0
         for line in file:
