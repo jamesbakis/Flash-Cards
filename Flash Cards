@@ -1,0 +1,51 @@
+import tkinter as tk
+import random
+
+root = tk.Tk()
+flashcardLabel = tk.Label(root, wraplength=250, text="Press enter to see flash cards")
+flashcards = []
+flashcard = None
+flashcardState = True
+
+def flashcard_flip(direction):  
+    global flashcardLabel, flashcards, flashcard
+    if flashcardState:
+        flashcardLabel.configure(text=flashcard[1])
+        flashcardState = False
+    else:
+        flashcardLabel.configure(text=flashcard[0])    
+
+def flashcard_next(direction=None):
+    global flashcardLabel, flashcards, flashcard
+    flashcard = random.choice(flashcards)
+    flashcardLabel.configure(text=flashcard[0])
+    
+
+def main():
+
+    global flashcards
+
+    with open("flashcards", "r") as file:
+        unit = []
+        i = 0
+        for line in file:
+            if i % 2 == 0: 
+                unit = []
+            unit.append(line.rstrip())
+            flashcards.append(unit)
+            i += 1
+
+
+    global root
+    root.title("Flash cards")
+    root.configure(background="black")
+    root.geometry("700x700+300+0")
+    global flashcardLabel
+    flashcardLabel.place(relx=0.5, rely=0.5, anchor='center')
+    flashcardLabel.tkraise() 
+    root.bind_all("<Right>", flashcard_next)
+    root.bind_all("<space>", flashcard_flip)
+    root.mainloop()
+
+if __name__ == "__main__":
+    main()
