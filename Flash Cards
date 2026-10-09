@@ -8,12 +8,14 @@ flashcard = None
 flashcardState = True
 
 def flashcard_flip(direction):  
-    global flashcardLabel, flashcards, flashcard
+    global flashcardLabel, flashcard, flashcardState
     if flashcardState:
         flashcardLabel.configure(text=flashcard[1])
         flashcardState = False
     else:
-        flashcardLabel.configure(text=flashcard[0])    
+        flashcardLabel.configure(text=flashcard[0])
+        flashcardState = True
+
 
 def flashcard_next(direction=None):
     global flashcardLabel, flashcards, flashcard
